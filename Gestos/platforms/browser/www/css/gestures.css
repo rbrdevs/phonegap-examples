@@ -19,3 +19,18 @@ button {
     font-size: 1em;
     margin-top: 10px;
 }
+
+#zona-gestos {
+    width: 100%;
+    background-color: #7fba67;
+    margin-top: 10px;
+    min-height: 300px;
+    display: block;
+}
+
+#info {
+    color: #fff;
+    font-size: 2em;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
