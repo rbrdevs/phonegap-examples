@@ -1,3 +1,5 @@
+// https://github.com/h4ckademy/mooc-mobile-camera
+
 var app={
     inicio: function() {
         this.iniciaFastClick();
@@ -11,12 +13,24 @@ var app={
     iniciaBotones: function() {
         var botonAction = document.querySelector('#button-action');
         botonAction.addEventListener('click', this.tomarFoto);
+
+        var filterButtons = document.querySelectorAll('.button-filter');
+        filterButtons[0].addEventListener('click', function() {
+            app.aplicarFiltro('gray');
+        });
+        filterButtons[1].addEventListener('click', function() {
+            app.aplicarFiltro('negative');
+        });
+        filterButtons[2].addEventListener('click', function() {
+            app.aplicarFiltro('sepia');
+        });
     },
     
     tomarFoto: function() {
         var opciones = {
             quality: 50,
             //sourceType: pictureSourceType,
+            cameraDirection: Camera.Direction.FRONT,
             destinationType: Camera.DestinationType.FILE_URI,
             targetWidth: 300,
             targetHeight: 300,
@@ -34,7 +48,6 @@ var app={
     },
 
     pintarFoto: function(img) {
-        console.log("hola");
         var canvas = document.querySelector('#foto');
         var context = canvas.getContext('2d');
         canvas.width = img.width;
@@ -43,10 +56,20 @@ var app={
     },
     errorAlTomarFoto: function(message) {
         console.log('Fallo al tomar foto o toma cancelada: '+message);
+    },
+
+    aplicarFiltro: function(filterName) {
+        var canvas = document.querySelector('#foto');
+        var context = canvas.getContext('2d');
+        imageData = context.getImageData(0,0,canvas.width, canvas.height);        
+        effects[filterName](imageData.data);
+        context.putImageData(imageData,0,0);
     }
 
 
 };
+
+var imageData;
 
 if ('addEventListener' in document) {
     document.addEventListener('DOMContentLoaded', function() {
