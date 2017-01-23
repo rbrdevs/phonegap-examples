@@ -36,10 +36,11 @@ var app={
 
     cargarFoto: function(pictureSourceType) {
         console.log(pictureSourceType);
-        var opciones = {
-            quality: 50,
+        var opciones = { 
+            quality: 80,
+            saveToPhotoAlbum: true,
             sourceType: pictureSourceType,
-            cameraDirection: Camera.Direction.FRONT,
+            cameraDirection: Camera.Direction.FRONT, //en el MotoG no parece funcionar
             destinationType: Camera.DestinationType.FILE_URI,
             targetWidth: 300,
             targetHeight: 300,
