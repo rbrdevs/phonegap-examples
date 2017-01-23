@@ -12,7 +12,13 @@ var app={
 
     iniciaBotones: function() {
         var botonAction = document.querySelector('#button-action');
-        botonAction.addEventListener('click', this.tomarFoto);
+        botonAction.addEventListener('click', function() {
+            app.cargarFoto(Camera.PictureSourceType.CAMERA);
+        });
+        var buttonGallery = document.querySelector('#button-gallery');
+        buttonGallery.addEventListener('click', function() {
+            app.cargarFoto(Camera.PictureSourceType.PHOTOLIBRARY);
+        });
 
         var filterButtons = document.querySelectorAll('.button-filter');
         filterButtons[0].addEventListener('click', function() {
@@ -26,20 +32,23 @@ var app={
         });
     },
     
-    tomarFoto: function() {
+
+
+    cargarFoto: function(pictureSourceType) {
+        console.log(pictureSourceType);
         var opciones = {
             quality: 50,
-            //sourceType: pictureSourceType,
+            sourceType: pictureSourceType,
             cameraDirection: Camera.Direction.FRONT,
             destinationType: Camera.DestinationType.FILE_URI,
             targetWidth: 300,
             targetHeight: 300,
             correctOrientation: true
-        }
-        navigator.camera.getPicture(app.fotoTomada, app.errorAlTomarFoto, opciones);
+        };
+        navigator.camera.getPicture(app.fotoCargada, app.errorAlCargarFoto, opciones);
     },
 
-    fotoTomada: function(imageURI) {
+    fotoCargada: function(imageURI) {
         var img = document.createElement('img');
         img.onload = function() {
             app.pintarFoto(img);
@@ -54,7 +63,7 @@ var app={
         canvas.height = img.height;
         context.drawImage(img,0,0,img.width,img.height);
     },
-    errorAlTomarFoto: function(message) {
+    errorAlCargarFoto: function(message) {
         console.log('Fallo al tomar foto o toma cancelada: '+message);
     },
 
