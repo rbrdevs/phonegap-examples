@@ -1,5 +1,13 @@
 // https://github.com/h4ckademy/mooc-mobile-maps
 
+/**
+ * Es necesario instalar el plugin whitelist 
+ * https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-whitelist/
+ * 
+ * > cordova plugin add cordova-plugin-whitelist
+ * > cordova prepare
+ */
+
 var app={
     inicio: function() {
         this.iniciaFastClick();        
@@ -22,8 +30,19 @@ var app={
 		    maxZoom: 18
     	}).addTo(miMapa);
 
+        app.pintaMarcador([position.coords.latitude,position.coords.longitude],'¡Estoy aquí!', miMapa);
+
+        miMapa.on('click', function(evento) {
+            var texto = 'Marcador en l('+evento.latlng.lat.toFixed(2)+') y L('+evento.latlng.lng.toFixed(2)+')';
+            app.pintaMarcador(evento.latlng,texto,miMapa);
+        });
     },
     
+    pintaMarcador: function(latlng, texto, mapa) {
+        var marcador = L.marker(latlng).addTo(mapa);
+        marcador.bindPopup(texto).openPopup();
+    },
+
     errorAlSolicitarLocalizaacion: function(error) {
         console.log(error.code + ': '+error.message);
     }
