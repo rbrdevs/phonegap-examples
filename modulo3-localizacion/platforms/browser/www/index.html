@@ -4,7 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
         <title>Maps</title>
-        <link rel="stylesheet" href="css/maps.css">
+        <link rel="stylesheet" type="text/css" href="css/leaflet.css">
+        <link rel="stylesheet" type="text/css" href="css/maps.css">        
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com; img-src *">
+        <!-- Es necesario instalar el pluigin whitelist -->
     </head>
     <body>
         <div class="header">
@@ -12,13 +15,14 @@
             <span>Mapas con Geolocalización</span>
         </div>
 
-        <div id="coords"></div>
+    	<div id="map"></div>
 
         <div class="footer">
             Creando Aps. Aprende a programar aplicaciones móviles.
         </div>
 
         <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/leaflet.js"></script>
         <script type="text/javascript" src="js/fastclick.js"></script>                
         <script type="text/javascript" src="js/maps.js"></script>        
     </body>
