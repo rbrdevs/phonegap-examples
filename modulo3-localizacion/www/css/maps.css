@@ -29,6 +29,28 @@ body {
 #map {
 	margin: 20px 0;
 	border: 1px solid;
-	height: 500px;
+	height: 350px;
 }
 
+.button-container {
+    margin: 1rem;
+    text-align: center;
+}
+
+.button {
+    border: 1px solid;
+    color: #fff;
+    padding: 10px;
+}
+
+#button-stop {
+    font-size: large;
+    border-radius: 10px;
+    background-color: #fd4140;
+}
+
+
+#button-start{
+  font-size: large;
+  background-color: #92BA3F;
+}

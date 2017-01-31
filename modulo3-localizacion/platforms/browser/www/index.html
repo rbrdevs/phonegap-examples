@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
+        <meta charset="utf-8"> 
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
         <title>Maps</title>
         <link rel="stylesheet" type="text/css" href="css/leaflet.css">
         <link rel="stylesheet" type="text/css" href="css/maps.css">        
         <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com; img-src *">
         <!-- Es necesario instalar el pluigin whitelist -->
-    </head>
+        <allow-navigation href="*" />
+    </head> 
     <body>
         <div class="header">
             <img src="img/maps.png" align="left">
@@ -17,6 +18,10 @@
 
     	<div id="map"></div>
 
+        <div id="button-container">
+            <button id="button-start" class="button">Start</button>
+            <button id="button-stop" class="button">Stop</button>            
+        </div>
         <div class="footer">
             Creando Aps. Aprende a programar aplicaciones móviles.
         </div>
