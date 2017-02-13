@@ -1,5 +1,7 @@
 body {
     background-color: #fdcf58;
+    margin: 0;
+    padding: 0;
 }
 
 body.agitado {
